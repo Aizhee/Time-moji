@@ -14,7 +14,4 @@
     "url": "https://github.com/Aizhee/Time-moji"
   },
   "homepage": "https://aizhee.github.io/Time-moji/",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  }
 }
