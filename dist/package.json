@@ -1,6 +1,6 @@
 {
   "name": "time-moji",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple emoji package that returns the equivalent emoji of the datetime input for Node.js",
   "main": "index.js",
   "scripts": {
@@ -13,5 +13,7 @@
     "type": "git",
     "url": "https://github.com/Aizhee/Time-moji"
   },
+  "bugs": {
+    "url": "https://github.com/Aizhee/Time-moji/issues"},
   "homepage": "https://aizhee.github.io/Time-moji/"
 }
