@@ -55,5 +55,12 @@ function getTimeMoji(dateTime, type) {
     }
 }
 
+// Check if module.exports is defined (Node.js environment)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = getTimeMoji;
+} else {
+    // Define getTimeMoji in the global scope for browser environments
+window.getTimeMoji = getTimeMoji;
+}
 
-module.exports = getTimeMoji;
+

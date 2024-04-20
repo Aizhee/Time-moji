@@ -109,7 +109,7 @@
 
         function updateTimeCode() {
             const code = document.querySelector('#generated-code');
-            code.innerHTML = `&lt;div class="emoji-time"&gt;&lt;/div&gt;\n&lt;script&gt;\nfunction updateTime() {\n    const emoji = document.querySelector(\'.emoji-time\');\n    emoji.textContent = getTimeMoji(new Date(),` + type + `);\n}\nwindow.addEventListener(\'DOMContentLoaded\', () => {\n    updateTime();\n    setInterval(updateTime, 1000);\n});\n&lt;/script&gt;`;
+            code.innerHTML = `&lt;div class="emoji-time"&gt;&lt;/div&gt;\n&lt;script&gt;\nfunction updateTime() {\n    const emoji = document.querySelector(\'.emoji-time\');\n    emoji.textContent = getTimeMoji(new Date(),'` + type + `');\n}\nwindow.addEventListener(\'DOMContentLoaded\', () => {\n    updateTime();\n    setInterval(updateTime, 1000);\n});\n&lt;/script&gt;`;
             Prism.highlightElement(code);
         }
 

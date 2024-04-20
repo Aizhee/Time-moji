@@ -50,7 +50,7 @@ getTimeMoji(dateTime: Date, type: string)
 <script>
 function updateTime() {
     const emoji = document.querySelector('.emoji-time');
-    emoji.textContent = getTimeMoji(new Date(),clock);
+    emoji.textContent = getTimeMoji(new Date(),'clock');
 }
 window.addEventListener('DOMContentLoaded', () => {
     updateTime();
