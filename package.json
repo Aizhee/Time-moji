@@ -8,5 +8,8 @@
   },
   "keywords": ["time", "emoji", "clock", "time-emoji"],
   "author": "Aizhe",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aizhee/Time-moji"}
 }
