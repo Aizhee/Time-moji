@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Moji</title>
+    <link rel="icon" type="image/x-icon" href="https://s12.gifyu.com/images/SZFK7.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        p, h1, h2, h3, h4, h5, h6, .dark-mode-btn,.emoji,.time, img {
+            user-select: none;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0f0d11;
+            margin: 10px;
+            padding: 10px;
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #f0f0f0;
+        }
+
+        .container {
+            width: 50%;
+            background-color: #151515;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .inner {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        p {
+            color: #bcbcbc;
+        }
+
+        .emoji {
+            font-size: 1000%;
+        }
+
+        .dark-mode-btn {
+            cursor: pointer;
+            color: #f7f7f7;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            background-color: #424141;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .dark-mode-btn:hover {
+            color: #000000;
+            background-color: #ffffff;
+        }
+
+    </style>
+    <link rel="stylesheet" href="./css/prism.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Time-Moji</h1>
+        
+        <img alt="NPM Version" src="https://img.shields.io/npm/v/time-moji?style=flat&label=time-moji" draggable="false">
+        <hr>
+        <p>A lightweight JavaScript library that adds dynamic and visually appealing time-based emoji displays to your web applications. With Time-Moji, you can easily convert the current time into corresponding emojis, adding a fun and engaging element to your time displays.</p>
+        
+     <div class="inner">    
+        <div class="emoji"></div>
+        <div class="time"></div>
+        <div class="dark-mode-btn" onclick="toggleType()" >
+            <i class="fa fa-arrows-alt" aria-hidden="true"></i> Toggle Type
+        </div>
+    </div>
+        <pre><code class="language-html" id="generated-code"></code></pre>
+        
+    </div>
+    <div class="container">
+        <h1>Usage</h1>
+        <hr>
+        <p>Include the time-moji script</p>
+        <p>Using jsdelivr:</p>
+        <pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/time-moji/dist/index.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>Using jsdelivr(minified):</p>
+        <pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/time-moji/dist/index.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>Using unpkg:</p>
+        <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/time-moji/dist/index.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>Using unpkg(minified):</p>
+        <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/time-moji/dist/index.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>You can also use NPM:</p>
+        <pre><code class="language-b">npm i time-moji</code></pre>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/time-moji/dist/index.js"></script>
+    <script>
+        let type = 'clock'; // Initial type
+
+        function updateTimeCode() {
+            const code = document.querySelector('#generated-code');
+            code.innerHTML = `&lt;div class="emoji-time"&gt;&lt;/div&gt;\n&lt;script&gt;\nfunction updateTime() {\n    const emoji = document.querySelector(\'.emoji-time\');\n    emoji.textContent = getTimeMoji(new Date(),` + type + `);\n}\nwindow.addEventListener(\'DOMContentLoaded\', () => {\n    updateTime();\n    setInterval(updateTime, 1000);\n});\n&lt;/script&gt;`;
+            Prism.highlightElement(code);
+        }
+
+        function updateTime() {
+            const emoji = document.querySelector('.emoji');
+            emoji.textContent = getTimeMoji(new Date(), type);
+            
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const meridian = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12; // Convert hours to 12-hour format
+
+            const timeElement = document.querySelector('.time');
+            timeElement.textContent = `${displayHours}:${minutes.toString().padStart(2, '0')} ${meridian}`;
+        }
+
+        function toggleType() {
+            type = type === 'clock' ? 'landscape' : 'clock'; // Toggle between clock and landscape
+            updateTime();
+            updateTimeCode();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateTime();
+            updateTimeCode();
+            setInterval(updateTime, 1000);
+        });
+    </script>
+    <script src="./js/prism.js"></script>
+</body>
+</html>
+

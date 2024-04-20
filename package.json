@@ -1,0 +1,12 @@
+{
+  "name": "time-moji",
+  "version": "0.0.2",
+  "description": "A simple emoji package that returns the equivalent emoji of the datetime input for Node.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "node dist/test.js"
+  },
+  "keywords": ["time", "emoji", "clock", "time-emoji"],
+  "author": "Aizhe",
+  "license": "MIT"
+}
