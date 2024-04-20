@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', () => {
 ```
 
 **Get Started**:
-Visit the Time-Moji GitHub repository to learn more and get started with integrating dynamic time displays into your web applications.
+Visit the Time-Moji [GitHub repository](https://github.com/Aizhee/Time-moji) to learn more and get started with integrating dynamic time displays into your web applications.
 
 **License**:
 Time-Moji is licensed under the MIT License, allowing you to use and modify the library freely in both personal and commercial projects.

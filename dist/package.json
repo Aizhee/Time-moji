@@ -1,6 +1,6 @@
 {
   "name": "time-moji",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A simple emoji package that returns the equivalent emoji of the datetime input for Node.js",
   "main": "index.js",
   "scripts": {
