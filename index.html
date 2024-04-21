@@ -13,7 +13,7 @@
         }
    
         ::-webkit-scrollbar-track-piece  {
-        background-color: #0a090b;
+        background-color: #0a090bae;
         }
         ::-webkit-scrollbar-thumb:vertical {
         height: 5px;
@@ -26,6 +26,10 @@
         border-radius: 5px;
         }
         
+        pre {
+            box-shadow: 0px 20px 44px -17px rgba(0,0,0,1);
+        }
+
         /* Style the tab */
         .tab {
         overflow: hidden;
@@ -61,7 +65,7 @@
         /* Style the tab content */
         .tabcontent {
         display: none;
-        padding: 6px 12px;
+        padding: 0 0;
         border-top: none;
         }
         
@@ -84,7 +88,7 @@
 
         .container {
             width: 90%;
-            max-width: 400px;
+            max-width: 500px;
             background-color: #151515;
             padding: 20px;
             border-radius: 10px;
@@ -126,14 +130,51 @@
             background-color: #ffffff;
         }
 
+        #logo {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+        #header {
+            display: flex;
+            justify-content: space-between; 
+            flex-wrap: wrap-reverse;
+            align-items: center;
+        }
+        #title {
+            width: 300px;
+        }
+        @media screen and (max-width: 600px) {
+            #title {
+                width: 100%;
+                text-align: center;
+            }
+            #logo-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            
+        }
     </style>
     <link rel="stylesheet" href="./css/prism.css">
 </head>
 <body>
     <div class="container">
-        <h1>Time-Moji</h1>
         
-        <img alt="NPM Version" src="https://img.shields.io/npm/v/time-moji?style=flat&label=time-moji" draggable="false">
+        <div id="header">
+
+            <div id="title">
+                <h1>Time-Moji</h1>
+                <img alt="NPM Version" src="https://img.shields.io/npm/v/time-moji?style=flat&label=time-moji" draggable="false">
+            </div>
+
+            <div id="logo-container">
+                <img id="logo" alt="Time-Moji Logo" src="https://s12.gifyu.com/images/SZFK7.png" draggable="false">
+            </div>
+
+        </div>
+        
         <hr>
         <p>A lightweight JavaScript library that adds dynamic and visually appealing time-based emoji displays to your web applications. With Time-Moji, you can easily convert the current time into corresponding emojis, adding a fun and engaging element to your time displays.</p>
         
