@@ -18,12 +18,12 @@
 1. Include the Time-Moji library in your HTML file using a script tag.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/time-moji/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/time-moji/time-moji.js"></script>
 ```
 or 
 
 ```html
-<script src="https://unpkg.com/time-moji/index.js"></script>
+<script src="https://unpkg.com/time-moji/time-moji.js"></script>
 ```
 or Install with NPM
 ```

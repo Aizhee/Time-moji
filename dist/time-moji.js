@@ -1,3 +1,5 @@
+//Time-Moji v0.0.9 | (c) 2024 by @Aizhe | MIT License
+
 /**
  * Get clock or cityscape emoji corresponding to the given date/time.
  * @param {Date} dateTime - The date/time for which to get the emoji.
@@ -46,7 +48,8 @@ function getTimeMoji(dateTime, type) {
         const landscapeEmojis = {
             6: '🌇', 7: '🌇', 8: '🌇', 9: '🌇', 10: '🌇', 11: '🌇',
             12: '🏙️', 13: '🏙️', 14: '🏙️', 15: '🏙️', 16: '🏙️', 17: '🏙️',
-            18: '🌆', 19: '🌆', 20: '🌉', 21: '🌉', 22: '🌉', 23: '🌉'
+            18: '🌆', 19: '🌆', 20: '🌉', 21: '🌉', 22: '🌉', 23: '🌉',
+            0: '🌉', 1: '🌉', 2: '🌉', 3: '🌉', 4: '🌉',
         };
         return landscapeEmojis[hour] || '🌄'; // fallback to sunrise over mountains if no landscape emoji found
     } else {
@@ -59,7 +62,7 @@ function getTimeMoji(dateTime, type) {
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = getTimeMoji;
 } else {
-    // Define getTimeMoji in the global scope for browser environments
+// Define getTimeMoji in the global scope for browser environments
 window.getTimeMoji = getTimeMoji;
 }
 
