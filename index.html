@@ -144,6 +144,16 @@
         #title {
             width: 300px;
         }
+        a {
+            text-decoration: none;
+            color: #f0f0f0;
+        }
+        #credentials{
+            color: #f0f0f077;
+            font-size: 12px;
+            text-align: center;
+        }
+
         @media screen and (max-width: 600px) {
             #title {
                 width: 100%;
@@ -166,7 +176,17 @@
 
             <div id="title">
                 <h1>Time-Moji</h1>
-                <img alt="NPM Version" src="https://img.shields.io/npm/v/time-moji?style=flat&label=time-moji" draggable="false">
+                <a href="https://www.npmjs.com/package/time-moji">
+                <img alt="NPM Version" src="https://img.shields.io/npm/v/time-moji?color=232323&style=flat&label=time-moji" draggable="false">
+                </a>  
+                <br>
+                  <a href="https://github.com/Aizhee/Time-moji">
+                    <img src="https://img.shields.io/github/stars/Aizhee/Time-moji?color=232323&label=Time-moji&logo=github&labelColor=232323" alt="View Time-moji on GitHub">
+                  </a>
+                  <a href="https://github.com/Aizhee">
+                    <img src="https://img.shields.io/badge/Aizhee-232323?labelColor=232323&logo=githubsponsors&logoColor=fff" alt="Author Aizhee">
+                  </a>
+                  
             </div>
 
             <div id="logo-container">
@@ -234,6 +254,7 @@
         <p>You can also use NPM:</p>
         <pre><code class="language-">npm i time-moji</code></pre>
     </div>
+    <p id="credentials">Time-Moji | © 2024 by Aizhe | MIT License</p>
     <script src="https://unpkg.com/time-moji/time-moji.js"></script>
     <script>
         function openTab(evt, tabName) {
