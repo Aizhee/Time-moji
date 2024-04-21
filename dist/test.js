@@ -1,3 +1,3 @@
-const getTimeMoji = require('./time-moji.min');
+const Tmj = require('./time-moji.min');
 
-console.log(getTimeMoji(new Date(),"clock")); // Test with current date/time
+console.log(Tmj.getTimeMoji(new Date(),"clock")); // Test with current date/time
