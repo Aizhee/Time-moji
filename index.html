@@ -7,6 +7,64 @@
     <link rel="icon" type="image/x-icon" href="https://s12.gifyu.com/images/SZFK7.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        }
+   
+        ::-webkit-scrollbar-track-piece  {
+        background-color: #0a090b;
+        }
+        ::-webkit-scrollbar-thumb:vertical {
+        height: 5px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:horizontal {
+        width: 10px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        }
+        
+        /* Style the tab */
+        .tab {
+        overflow: hidden;
+        border: 2px solid #606060;
+        border-radius: 5px;
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+        color: #ffffff;
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+        background-color: #ffffff;
+        color: #000000;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+        background-color: #ffffff;
+        color: #000000;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border-top: none;
+        }
+        
         p, h1, h2, h3, h4, h5, h6, .dark-mode-btn,.emoji,.time, img {
             user-select: none;
         }
@@ -86,37 +144,90 @@
             <i class="fa fa-arrows-alt" aria-hidden="true"></i> Toggle Type
         </div>
     </div>
-        <pre><code class="language-html" id="generated-code"></code></pre>
-        
+    <p>Example Code:</p>
+    <div class="tab">
+        <button class="tablinks code-example active" onclick="openTab(event, 'simple')">Simple</button>
+        <button class="tablinks code-example" onclick="openTab(event, 'dynamic')">Dynamic</button>
+      </div>
+      
+      <div id="simple" class="tabcontent code-example" style="display:block;">
+        <pre><code class="language-javascript" id="generated-code"></code></pre>
+      </div>
+      
+      <div id="dynamic" class="tabcontent code-example" style="display:none;">
+        <pre><code class="lang-html" id="generated-code-dynamic"></code></pre>
+      </div> 
     </div>
+
     <div class="container">
         <h1>Usage</h1>
         <hr>
         <p>Include the time-moji script</p>
-        <p>Using jsdelivr:</p>
-        <pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/time-moji@latest/time-moji.js&quot;&gt;&lt;/script&gt;</code></pre>
-        <p>Using jsdelivr(minified):</p>
-        <pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/time-moji@latest/time-moji.min.js&quot;&gt;&lt;/script&gt;</code></pre>
-        <p>Using unpkg:</p>
-        <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/time-moji/time-moji.js&quot;&gt;&lt;/script&gt;</code></pre>
-        <p>Using unpkg(minified):</p>
-        <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/time-moji/time-moji.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+        <p>Using jsDelivr:</p>
+          <div class="tab">
+            <button class="tablinks jsdelivr active" onclick="openTab(event, 'jsdelivr-unminified')">Standard</button>
+            <button class="tablinks jsdelivr" onclick="openTab(event, 'jsdelivr-minified')">Minified</button>
+          </div>
+          
+          <div id="jsdelivr-unminified" class="tabcontent jsdelivr" style="display:block;">
+            <pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/time-moji@latest/time-moji.js&quot;&gt;&lt;/script&gt;</code></pre>
+          </div>
+          
+          <div id="jsdelivr-minified" class="tabcontent jsdelivr">
+            <pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/time-moji@latest/time-moji.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+          </div>
+
+          <p>Using Unpkg:</p>
+          <div class="tab">
+            <button class="tablinks unpkg active" onclick="openTab(event, 'unpkg-unminified')">Standard</button>
+            <button class="tablinks unpkg" onclick="openTab(event, 'unpkg-minified')">Minified</button>
+          </div>
+          
+          <div id="unpkg-unminified" class="tabcontent unpkg" style="display:block;">
+            <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/time-moji/time-moji.js&quot;&gt;&lt;/script&gt;</code></pre>
+          </div>
+          
+          <div id="unpkg-minified" class="tabcontent unpkg">
+            <pre><code class="language-html">&lt;script src=&quot;https://unpkg.com/time-moji/time-moji.min.js&quot;&gt;&lt;/script&gt;</code></pre>
+          </div>          
         <p>You can also use NPM:</p>
         <pre><code class="language-">npm i time-moji</code></pre>
     </div>
     <script src="https://unpkg.com/time-moji/time-moji.js"></script>
     <script>
+        function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        var tabGroup = evt.currentTarget.classList.contains("jsdelivr") ? "jsdelivr" : (evt.currentTarget.classList.contains("unpkg") ? "unpkg" : "code-example");
+
+        tabcontent = document.getElementsByClassName("tabcontent " + tabGroup);
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName("tablinks " + tabGroup);
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+
         let type = 'clock'; // Initial type
 
         function updateTimeCode() {
-            const code = document.querySelector('#generated-code');
-            code.innerHTML = `&lt;div class="emoji-time"&gt;&lt;/div&gt;\n&lt;script&gt;\nfunction updateTime() {\n    const emoji = document.querySelector(\'.emoji-time\');\n    emoji.textContent = getTimeMoji(new Date(),'` + type + `');\n}\nwindow.addEventListener(\'DOMContentLoaded\', () => {\n    updateTime();\n    setInterval(updateTime, 1000);\n});\n&lt;/script&gt;`;
+            const code = document.querySelector('#generated-code-dynamic');
+            const codeStd = document.querySelector('#generated-code');
+
+            code.innerHTML = `&lt;div class="emoji-time"&gt;&lt;/div&gt;\n&lt;script&gt;\nfunction updateTime() {\n    const emoji = document.querySelector(\'.emoji-time\');\n    emoji.textContent = Tmj.getTimeMoji(new Date(),'` + type + `');\n}\nwindow.addEventListener(\'DOMContentLoaded\', () => {\n    updateTime();\n    setInterval(updateTime, 1000);\n});\n&lt;/script&gt;`;
+            codeStd.innerHTML = `Tmj.getTimeMoji(new Date(),'` + type + `');`;
             Prism.highlightElement(code);
+            Prism.highlightElement(codeStd);
         }
 
         function updateTime() {
             const emoji = document.querySelector('.emoji');
-            emoji.textContent = getTimeMoji(new Date(), type);
+            emoji.textContent = Tmj.getTimeMoji(new Date(), type);
             
             const now = new Date();
             const hours = now.getHours();
@@ -137,7 +248,10 @@
         window.addEventListener('DOMContentLoaded', () => {
             updateTime();
             updateTimeCode();
-            setInterval(updateTime, 1000);
+            setInterval(() => {
+            updateTime();
+            updateTimeCode();
+            }, 1000);
         });
     </script>
     <script src="./js/prism.js"></script>
