@@ -3,9 +3,9 @@ name: publish npm
 on:
   push:
     paths:
-      - 'dist/package.json' 
+      - 'dist/package.json'
     branches:
-      - main 
+      - main
 
 jobs:
   publish:
@@ -14,35 +14,26 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Check for changes in version field of package.json
+      - name: Check for changes in package.json
         id: package-changed
         run: |
           git diff --exit-code --quiet ${{ github.event.before }} ${{ github.sha }} -- package.json
           if [ $? -eq 1 ]; then
-            if git diff --quiet ${{ github.event.before }} ${{ github.sha }} -- package.json | grep -q '^+.*"version":'; then
-              echo "::set-output name=changed::true"
-            else
-              echo "::set-output name=changed::false"
-            fi
+            echo "::set-output name=changed::true"
           else
             echo "::set-output name=changed::false"
           fi
 
-      - name: Extract version from package.json
-        if: steps.package-changed.outputs.changed == 'true' # Only proceed if package.json has changed
-        id: extract-version
-        run: echo "::set-output name=version::$(jq -r .version package.json)"
-
-      - name: node
-        if: steps.extract-version.outputs.version != '' # Only proceed if version field has changed
+      - name: Setup Node.js
+        if: steps.package-changed.outputs.changed == 'true'
         uses: actions/setup-node@v2
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org
 
-      - name: publish
-        if: steps.extract-version.outputs.version != '' # Only proceed if version field has changed
+      - name: Publish to npm
+        if: steps.package-changed.outputs.changed == 'true'
         run: npm publish --access public
         working-directory: dist
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
