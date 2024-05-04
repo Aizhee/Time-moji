@@ -14,6 +14,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
+      - name: Fetch all history for all tags and branches
+        run: git fetch --unshallow
+      
       - name: Check for changes in package.json
         id: package-changed
         run: |
