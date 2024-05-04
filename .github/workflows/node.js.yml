@@ -22,20 +22,20 @@ jobs:
         run: |
           git diff --exit-code --quiet ${{ github.event.before }} ${{ github.sha }} -- package.json
           if [ $? -eq 1 ]; then
-          echo "changed=true" >> $GITHUB_ENV
-            else
-          echo "changed=false" >> $GITHUB_ENV
-            fi
+            echo "changed=true" >> $GITHUB_ENV
+          else
+            echo "changed=false" >> $GITHUB_ENV
+          fi
 
       - name: Setup Node.js
-        if: env.package-changed == 'true'
+        if: env.changed == 'true'
         uses: actions/setup-node@v2
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org
 
       - name: Publish to npm
-        if: env.package-changed == 'true'
+        if: env.changed == 'true'
         run: npm publish --access public
         working-directory: dist
         env:
