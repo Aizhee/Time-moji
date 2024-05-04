@@ -112,3 +112,7 @@ Time-Moji is licensed under the MIT License, allowing you to use and modify the 
 ---
 
 Feel free to adjust the description further if needed!
+
+---
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/O4O0XNVKI)
