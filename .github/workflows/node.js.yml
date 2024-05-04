@@ -17,25 +17,13 @@ jobs:
       - name: Fetch all history for all tags and branches
         run: git fetch --unshallow
       
-      - name: Check for changes in package.json
-        id: package-changed
-        run: |
-          git diff --exit-code --quiet ${{ github.event.before }} ${{ github.sha }} -- dist/package.json
-          if [ $? -eq 1 ]; then
-            echo "changed=true" >> $GITHUB_ENV
-          else
-            echo "changed=false" >> $GITHUB_ENV
-          fi
-
       - name: Setup Node.js
-        if: env.changed == 'true'
         uses: actions/setup-node@v2
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org
 
       - name: Publish to npm
-        if: env.changed == 'true'
         run: npm publish --access public
         working-directory: dist
         env:
